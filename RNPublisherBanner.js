@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   NativeModules,
   requireNativeComponent,
@@ -27,7 +28,7 @@ export default class PublisherBanner extends React.Component {
   }
 
   render() {
-    const { adUnitID, testDeviceID, bannerSize, style, didFailToReceiveAdWithError,admobDispatchAppEvent } = this.props;
+    const { adUnitID, testDeviceID, bannerSize, style, didFailToReceiveAdWithError, admobDispatchAppEvent } = this.props;
     return (
       <View style={this.props.style}>
         <RNBanner
@@ -64,30 +65,32 @@ PublisherBanner.propTypes = {
    *
    * banner is default
    */
-  bannerSize: React.PropTypes.string,
+  bannerSize: PropTypes.string,
 
   /**
    * AdMob ad unit ID
    */
-  adUnitID: React.PropTypes.string,
+  adUnitID: PropTypes.string,
 
   /**
    * Test device ID
    */
-  testDeviceID: React.PropTypes.string,
+  testDeviceID: PropTypes.string,
 
   /**
    * AdMob iOS library events
    */
-  adViewDidReceiveAd: React.PropTypes.func,
-  didFailToReceiveAdWithError: React.PropTypes.func,
-  adViewWillPresentScreen: React.PropTypes.func,
-  adViewWillDismissScreen: React.PropTypes.func,
-  adViewDidDismissScreen: React.PropTypes.func,
-  adViewWillLeaveApplication: React.PropTypes.func,
-  admobDispatchAppEvent: React.PropTypes.func,
+  adViewDidReceiveAd: PropTypes.func,
+  didFailToReceiveAdWithError: PropTypes.func,
+  adViewWillPresentScreen: PropTypes.func,
+  adViewWillDismissScreen: PropTypes.func,
+  adViewDidDismissScreen: PropTypes.func,
+  adViewWillLeaveApplication: PropTypes.func,
+  admobDispatchAppEvent: PropTypes.func,
   ...View.propTypes,
 };
 
-PublisherBanner.defaultProps = { bannerSize: 'smartBannerPortrait', didFailToReceiveAdWithError: () => {} ,
-admobDispatchAppEvent: () => {}};
+PublisherBanner.defaultProps = {
+  bannerSize: 'smartBannerPortrait', didFailToReceiveAdWithError: () => { },
+  admobDispatchAppEvent: () => { }
+};
